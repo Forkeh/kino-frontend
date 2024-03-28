@@ -16,7 +16,6 @@ type FormValues = {
 export default function Signup({changeForm}: Props) {
     const { toast } = useToast();
     const auth = useAuth();
-    const navigate = useNavigate();
     const { register, handleSubmit, reset } = useForm<FormValues>();
 
     const onSubmit: SubmitHandler<FormValues> = (newUser) => {
@@ -28,7 +27,7 @@ export default function Signup({changeForm}: Props) {
                     title: "Signed up successfully!",
                     description: "You can now login with username " + newUser.username,
                 });
-                //navigate("/home", { replace: true });
+                changeForm("login");
                 reset();
             })
             .catch((e) => {
