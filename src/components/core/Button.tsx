@@ -8,7 +8,7 @@ interface Props {
 }
 
 export default function Button({ onClick, icon, style, children }: Props) {
-    const primary = "hover:text-cyan-400 font-bold text-white transition-all hover:scale-105 active:scale-100 active:text-white";
+    const primary = "hover:text-cyan-400 font-bold text-white sm:text-lg transition-all hover:scale-105 active:scale-100 active:text-white";
 
     const secondary =
         "text-white bg-red-600 hover:bg-white hover:text-red-600 active:scale-100 hover:outline outline-2 outline-red-600 font-bold drop-shadow-md";

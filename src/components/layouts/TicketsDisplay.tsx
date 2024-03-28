@@ -13,11 +13,18 @@ export default function TicketsDisplay({ selectedSeats }: Props) {
             <Carousel>
                 <CarouselPrevious variant={"ghost"} />
                 <CarouselContent>
-                    {selectedSeats.map((seat) => (
-                        <CarouselItem key={seat.id} className="basis-28 sm:basis-36 animate-fade-in">
-                            <Ticket seat={seat} />
-                        </CarouselItem>
-                    ))}
+                    {selectedSeats
+                        .sort((a, b) => {
+                            if (a.rowNumber === b.rowNumber) {
+                                return a.seatNumber - b.seatNumber;
+                            }
+                            return a.rowNumber - b.rowNumber;
+                        })
+                        .map((seat) => (
+                            <CarouselItem key={seat.id} className="basis-28 animate-fade-in sm:basis-36">
+                                <Ticket seat={seat} />
+                            </CarouselItem>
+                        ))}
                 </CarouselContent>
                 <CarouselNext variant={"ghost"} />
             </Carousel>
