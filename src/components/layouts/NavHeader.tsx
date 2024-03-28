@@ -4,13 +4,14 @@ import KinoSelect from "./KinoSelect";
 import { useAuth } from "@/contexts/AuthProvider";
 import Button from "../core/Button";
 import { RxAvatar } from "react-icons/rx";
-import { MdLocalMovies, MdAdminPanelSettings } from "react-icons/md";
+import { MdAdminPanelSettings } from "react-icons/md";
+import { GiFilmStrip } from "react-icons/gi";
 
 export default function NavHeader() {
     const auth = useAuth();
 
     return (
-        <nav className="bg-nav-background flex flex-col items-center gap-4 bg-red-700 bg-cover bg-repeat p-3 drop-shadow-lg sm:flex-row sm:justify-between sm:bg-contain">
+        <nav className="flex flex-col items-center gap-4 bg-red-700 bg-nav-background bg-cover bg-repeat p-3 drop-shadow-lg sm:flex-row sm:justify-between sm:bg-contain">
             <section className="flex cursor-pointer items-center gap-3">
                 <NavLink to={"/movies"}>
                     <div className="group flex flex-col items-center">
@@ -27,7 +28,7 @@ export default function NavHeader() {
                 <KinoSelect />
                 {!auth.isLoggedInAs(["ADMIN"]) && (
                     <NavLink to={"/movies"}>
-                        <Button style="primary" icon={<MdLocalMovies size={20} />}>
+                        <Button style="primary" icon={<GiFilmStrip size={20} />}>
                             Movies
                         </Button>
                     </NavLink>

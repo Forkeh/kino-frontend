@@ -8,6 +8,7 @@ import UserReservationsItem from "@/components/core/UserReservationsItem.tsx";
 export default function UserReservations() {
     const { username } = useAuth();
     const [reservations, setReservations] = useState<null | IReservation[]>(null);
+    console.log(reservations);
 
     useEffect(() => {
         getReservationsByUsername(username as string)
@@ -25,7 +26,7 @@ export default function UserReservations() {
 
     return (
         <>
-            <div className={"flex flex-row flex-wrap gap-x-28 gap-y-10"}>
+            <div className={"flex flex-row flex-wrap justify-center gap-5 sm:justify-start"}>
                 {reservations?.map((reservation) => <UserReservationsItem key={reservation.id} reservation={reservation} />)}
             </div>
         </>

@@ -16,7 +16,7 @@ export default function AdminDashboardPage() {
                                 className="drop-shadow-md transition-all group-hover:rotate-3 group-hover:scale-105 group-hover:text-teal-500"
                             />
                         </div>
-                        <h3 className="rounded-md bg-red-600 p-3 text-2xl font-bold text-white shadow-md transition-all hover:bg-red-400 active:scale-95">
+                        <h3 className="rounded-lg bg-red-600 p-3 text-2xl font-bold text-white shadow-md transition-all hover:bg-red-400 group-active:scale-95">
                             Add Movie
                         </h3>
                     </article>
@@ -29,7 +29,7 @@ export default function AdminDashboardPage() {
                                 className="drop-shadow-md transition-all group-hover:rotate-3 group-hover:scale-105 group-hover:text-teal-500"
                             />
                         </div>
-                        <h3 className="rounded-md bg-red-600 p-3 text-2xl font-bold text-white shadow-md transition-all hover:bg-red-400 active:scale-95">
+                        <h3 className="rounded-lg bg-red-600 p-3 text-2xl font-bold text-white shadow-md transition-all hover:bg-red-400 group-active:scale-95">
                             Create Screening
                         </h3>
                     </article>
@@ -42,7 +42,7 @@ export default function AdminDashboardPage() {
                                 className="drop-shadow-md transition-all group-hover:rotate-3 group-hover:scale-105 group-hover:text-teal-500"
                             />
                         </div>
-                        <h3 className="rounded-md bg-red-600 p-3 text-2xl font-bold text-white shadow-md transition-all hover:bg-red-400 active:scale-95">
+                        <h3 className="rounded-lg bg-red-600 p-3 text-2xl font-bold text-white shadow-md transition-all hover:bg-red-400 group-active:scale-95">
                             See Reservations
                         </h3>
                     </article>

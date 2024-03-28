@@ -46,13 +46,11 @@ export default function CreateMovieForm({ handleSearch, onSubmit, isSuccess, chi
                         TMDB Id
                     </label>
                     <input
-                        className="h-10 w-24 rounded-sm text-center focus:outline-none focus:outline-red-600"
+                        className="h-10 w-24 text-lg rounded-sm text-center outline outline-1 outline-slate-200 focus:outline-none focus:outline-red-600"
                         {...register("id", { required: true })}
                     />
                     <input
-                        className={
-                            "mt-1 w-20 cursor-pointer rounded-md bg-red-600 p-1 text-white transition-all hover:bg-red-400 active:scale-95"
-                        }
+                        className={"mt-1 w-20 cursor-pointer rounded-md bg-red-600 p-1 text-white transition-all hover:bg-red-400 active:scale-95"}
                         onClick={() => handleSearch(getValues("id"))}
                         type="button"
                         value="Find"
