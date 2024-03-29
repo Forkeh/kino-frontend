@@ -33,8 +33,8 @@ export default function UserReservationsItem({ reservation }: Props) {
 
                     <Popover>
                         <PopoverTrigger>
-                            <div className="flex w-full justify-center rounded-md bg-red-600 p-3 font-bold text-white shadow-md transition-all hover:bg-red-400 active:scale-95 max-w-40 mx-auto">
-                                <IoTicket size={20} />
+                            <div className="mx-auto flex w-full max-w-40 justify-center rounded-md bg-red-600 p-3 font-bold text-white shadow-md transition-all hover:bg-red-400 active:scale-95">
+                                <IoTicket size={20} className="mr-2" />
                                 {reservation.seats.length} {reservation.seats.length > 1 ? "Tickets" : "Ticket"}
                             </div>
                             <PopoverContent className="w-fit border-red-700 bg-orange-100 p-4 backdrop-blur-sm">
