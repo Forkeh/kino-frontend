@@ -49,7 +49,8 @@ export default function CreateScreeningForm({onSubmit}: Props) {
         onSubmit(request);
     }
 
-
+    const isSubmitDisabled = (!selectedMovie || !selectedAuditorium || !date || !time) ? true : false;
+    
     return (
         <section className="m-auto my-10 max-w-lg animate-fade-in">
             <form className="form" onSubmit={handleSubmit}>
@@ -118,9 +119,10 @@ export default function CreateScreeningForm({onSubmit}: Props) {
                 </div>
 
                 <input
-                    className="mt-5 w-24 cursor-pointer rounded-md bg-red-600 p-2 font-bold text-white transition-all hover:bg-red-400 active:scale-95"
+                    className="mt-5 w-24 cursor-pointer rounded-md bg-red-600 p-2 font-bold text-white transition-all hover:bg-red-400 active:scale-95 disabled:cursor-not-allowed disabled:bg-slate-300 disabled:text-slate-400 disabled:active:scale-100"
                     type="submit"
                     value="Submit"
+                    disabled={isSubmitDisabled}
                 />
             </form>
         </section>
