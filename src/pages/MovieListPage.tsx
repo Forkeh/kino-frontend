@@ -31,7 +31,7 @@ export default function MovieListPage() {
             
             <h1 className=" my-16 text-center text-5xl font-extrabold sm:text-left">Movies in {kino}</h1>
             <div key={id} className="grid animate-fade-in grid-cols-1 justify-items-center gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-                {movies?.map((movie) => <MovieItem movie={movie} key={movie.id} />)}
+                {movies?.sort((a,b) => a.title.localeCompare(b.title)).map((movie) => <MovieItem movie={movie} key={movie.id} />)}
             </div>
         </>
     );

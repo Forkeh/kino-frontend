@@ -36,7 +36,7 @@ export default function MovieSelect({setSelectedMovie}: Props) {
                     <SelectValue placeholder="Select a Movie" />
                 </SelectTrigger>
                 <SelectContent>
-                    {movies?.map((movie) => <SelectItem key={movie.id} value={String(movie.id)}>{movie.title}</SelectItem>)}
+                    {movies?.sort((a,b) => a.title.localeCompare(b.title)).map((movie) => <SelectItem key={movie.id} value={String(movie.id)}>{movie.title}</SelectItem>)}
                 </SelectContent>
             </Select>
         </>

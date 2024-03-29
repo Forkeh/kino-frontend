@@ -30,7 +30,7 @@ export default function AuditoriumSelect({setSelectedAuditorium}: Props) {
                     <SelectValue/>
                 </SelectTrigger>
                 <SelectContent>
-                    {auditoriums?.map((auditorium) => <SelectItem key={auditorium.id} value={String(auditorium.id)}>{auditorium.name}</SelectItem>)}
+                    {auditoriums?.sort((a,b) => a.name.localeCompare(b.name)).map((auditorium) => <SelectItem key={auditorium.id} value={String(auditorium.id)}>{auditorium.name}</SelectItem>)}
                 </SelectContent>
             </Select>
         </>
