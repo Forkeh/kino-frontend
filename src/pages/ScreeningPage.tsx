@@ -30,20 +30,22 @@ const ScreeningPage = () => {
             <div className={"flex flex-wrap justify-center gap-4 sm:mb-32 sm:gap-10"}>
                 <Auditorium screening={screening} handleSeatClick={handleSeatClick} />
 
-                <div className={"mb-20 flex flex-col gap-5"}>
-                    <div className="flex gap-2 justify-between">
+                <section className={"mb-20 flex flex-col gap-5"}>
+                    <div className="flex justify-between gap-2">
                         <SeatIcon color="#22c55e" text="Available" />
                         <SeatIcon color="#3b82f6" text="Selected" />
                         <SeatIcon color="#dc2626" text="Occupied" />
                     </div>
 
                     <SeatPricing seats={selectedSeats} is3D={screening.is3D} runtime={screening.movie.runtime} />
-                    <div className={"flex justify-center"}>
-                        <Link to={`${screening.id}`} state={selectedSeats}>
-                            <Button style="secondary">Continue</Button>
-                        </Link>
-                    </div>
-                </div>
+                    {selectedSeats.length > 0 && (
+                        <div className="flex animate-fade-in justify-center">
+                            <Link to={`${screening.id}`} state={selectedSeats}>
+                                <Button style="secondary">Continue</Button>
+                            </Link>
+                        </div>
+                    )}
+                </section>
             </div>
 
             <ScreeningTicketFooter selectedSeats={selectedSeats} />
