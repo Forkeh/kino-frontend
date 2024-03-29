@@ -5,6 +5,7 @@ import { getMovieScreeningsInCinema } from "@/services/apiFacade";
 import { useKino } from "@/contexts/KinoProvider";
 import { DATE_TIME_OPTIONS, TODAY, upcomingWeekDates } from "@/utils/dateUtils";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import EdgeFadeGradient from "@/components/core/EdgeFadeGradient";
 
 type Props = {
     movieId: number;
@@ -34,7 +35,7 @@ export default function ScreeningOverview({ movieId }: Props) {
             <section className="rounded-lg bg-[var(--backgroundColor)] p-3 shadow-lg">
                 <div className="relative flex w-full justify-center">
                     {/* // Gradient fade effect, parent needs to be relative */}
-                    <div className="pointer-events-none absolute z-10 h-full w-[90%] bg-[linear-gradient(90deg,rgba(255,220,174,1)0%,rgba(0,0,0,0)5%,rgba(0,0,0,0)95%,rgba(255,220,174,1)100%)]"></div>
+                    <EdgeFadeGradient color="from-[rgb(255,220,174)]" width={"w-[90%]"} />
                     <Carousel className="ml-0 w-[90%]">
                         <CarouselPrevious variant={"ghost"} className="transition-all hover:scale-125 hover:bg-white active:scale-100" />
                         <CarouselContent className="mx-1 pl-0">
