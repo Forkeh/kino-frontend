@@ -28,9 +28,9 @@ export default function ScreeningOverview({ movieId }: Props) {
 
     return (
         <>
-            <section className="flex items-end justify-between">
+            <section className="flex items-end justify-between mt-10">
                 <h2 className="mb-3 text-2xl font-bold sm:text-3xl">Showings in {kino}</h2>
-                <img className="w-32 drop-shadow-md" src="/cat_showings.png" alt="cat showings" />
+                {/* <img className="w-32 drop-shadow-md" src="/cat_showings.png" alt="cat showings" /> */}
             </section>
             <section className="rounded-lg bg-[var(--backgroundColor)] p-3 shadow-lg">
                 <div className="relative flex w-full justify-center">
