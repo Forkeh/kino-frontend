@@ -49,23 +49,25 @@ export default function CreateScreeningForm({onSubmit}: Props) {
         onSubmit(request);
     }
 
-
+    const isSubmitDisabled = (!selectedMovie || !selectedAuditorium || !date || !time) ? true : false;
+    
     return (
-        <>
+        <section className="m-auto my-10 max-w-lg animate-fade-in">
             <form className="form" onSubmit={handleSubmit}>
+                <h2 className="mb-5 text-2xl font-bold">Create Screening</h2>
                 <div className="flex flex-col gap-1">
                     <label htmlFor="movie">Movie:</label>
-                    <MovieSelect setSelectedMovie={setSelectedMovie}/>
+                    <MovieSelect setSelectedMovie={setSelectedMovie} />
                 </div>
 
                 <div className="flex flex-col gap-1">
                     <label htmlFor="cinema">Cinema:</label>
-                    <KinoSelect/>
+                    <KinoSelect />
                 </div>
 
                 <div className="flex flex-col gap-1">
                     <label htmlFor="auditorium">Auditorium</label>
-                    <AuditoriumSelect setSelectedAuditorium={setSelectedAuditorium}/>
+                    <AuditoriumSelect setSelectedAuditorium={setSelectedAuditorium} />
                 </div>
 
                 <div className="flex flex-col gap-1">
@@ -74,12 +76,9 @@ export default function CreateScreeningForm({onSubmit}: Props) {
                         <PopoverTrigger asChild>
                             <ShadButton
                                 variant={"outline"}
-                                className={cn(
-                                    "w-[11rem] justify-start text-left font-normal",
-                                    !date && "text-muted-foreground"
-                                )}
+                                className={cn("w-[11rem] justify-start text-left font-normal", !date && "text-muted-foreground")}
                             >
-                                <CalendarIcon className="mr-2 h-4 w-4"/>
+                                <CalendarIcon className="mr-2 h-4 w-4" />
                                 {date ? format(date, "PPP") : <span>Pick a date</span>}
                             </ShadButton>
                         </PopoverTrigger>
@@ -102,10 +101,11 @@ export default function CreateScreeningForm({onSubmit}: Props) {
                 <div className="flex flex-col gap-1">
                     <label htmlFor="time">Time</label>
                     <input
+                        className="rounded-sm text-center"
                         required={true}
                         type="time"
                         value={time}
-                        onChange={({target}) => setTime(target.value)}
+                        onChange={({ target }) => setTime(target.value)}
                         step="60"
                         min="09:00"
                         max="23:00"
@@ -115,11 +115,16 @@ export default function CreateScreeningForm({onSubmit}: Props) {
 
                 <div className="flex gap-5">
                     <label htmlFor="is3d">3D</label>
-                    <input type="checkbox" checked={is3D} onChange={() => setIs3D(prev => !prev)}/>
+                    <input type="checkbox" checked={is3D} onChange={() => setIs3D((prev) => !prev)} />
                 </div>
 
-                <input className={"hover:cursor-pointer"} type="submit" value="Submit"/>
+                <input
+                    className="mt-5 w-24 cursor-pointer rounded-md bg-red-600 p-2 font-bold text-white transition-all hover:bg-red-400 active:scale-95 disabled:cursor-not-allowed disabled:bg-slate-300 disabled:text-slate-400 disabled:active:scale-100"
+                    type="submit"
+                    value="Submit"
+                    disabled={isSubmitDisabled}
+                />
             </form>
-        </>
-    )
+        </section>
+    );
 }

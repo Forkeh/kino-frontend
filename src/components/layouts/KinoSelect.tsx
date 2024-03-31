@@ -35,7 +35,7 @@ export default function KinoSelect() {
                     <SelectValue placeholder="Cinema"/>
                 </SelectTrigger>
                 <SelectContent>
-                    {kinoOptions?.map((kinoOption) => <SelectItem key={kinoOption.id} value={kinoOption.name}>{kinoOption.name}</SelectItem>)}
+                    {kinoOptions?.sort((a,b) => a.name.localeCompare(b.name)).map((kinoOption) => <SelectItem key={kinoOption.id} value={kinoOption.name}>{kinoOption.name}</SelectItem>)}
                 </SelectContent>
             </Select>
         </>

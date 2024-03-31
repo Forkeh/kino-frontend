@@ -1,18 +1,20 @@
 import { IScreening } from "@/models/screening";
 import ScreeningTime from "./ScreeningTime";
+import { useKino } from "@/contexts/KinoProvider";
 
 type Props = {
-  date: string;
-  screenings: IScreening[];
+    date: string;
+    screenings: IScreening[];
 };
 
 export default function ScreeningDate({ date, screenings }: Props) {
-  return (
-    <>
-      <div className="flex w-40 flex-col gap-2 rounded-sm bg-slate-200 p-3 text-center">
-        <h2 className="text-lg font-bold">{date}</h2>
-        {screenings?.map((s) => <ScreeningTime key={s.id} screening={s} />)}
-      </div>
-    </>
-  );
+    const { id } = useKino();
+    return (
+        <>
+            <div key={id} className="flex h-full w-full animate-fade-in flex-col gap-2 border-r-2 border-orange-300 p-2">
+                <h2 className="text-center text-sm font-bold">{date}</h2>
+                {screenings?.map((s) => <ScreeningTime key={s.id} screening={s} />)}
+            </div>
+        </>
+    );
 }

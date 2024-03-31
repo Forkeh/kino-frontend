@@ -29,28 +29,23 @@ export default function MovieDetailsPage() {
     if (isLoading) return <div>Loading...</div>;
 
     return (
-        <>
-            <div className="flex gap-10">
-                <div className=" w-[70%]">
-                    <img className="rounded-md w-full object-cover" src={POSTER_URL + movie?.posterPath} alt="poster" />
+        <div className="mx-auto max-w-4xl animate-fade-in">
+            <section className="mb-5 flex flex-col items-center justify-center gap-3 rounded-lg bg-[var(--backgroundColor)] p-5 shadow-lg sm:flex-row sm:items-start sm:gap-10">
+                <div className=" sm:min-w-60">
+                    <img className="w-full max-w-sm rounded-lg object-cover drop-shadow-lg" src={POSTER_URL + movie?.posterPath} alt="poster" />
                 </div>
 
-                <div className={"flex flex-col gap-10"}>
-                    <div>
-                        <h1 className="text-5xl mb-5 ">{movie?.title}</h1>
-                        {/* <p className="text-2xl">Description </p> */}
-                        <p className="font-medium"> {movie?.overview}</p>
-                        <p className="font-extralight">Runtime</p>
-                        <p className="font-bold">{movie?.runtime}</p>
-                        <p className="font-extralight">Genres </p>
-                        <p className="font-bold">{movie?.genres.map((genre) => genre).join(", ")}</p>
-                    </div>
-                    <div>
-                        <ScreeningOverview movieId={Number(id as string)}/>
-                    </div>
+                <div className="flex flex-col">
+                    <h1 className="mb-5 text-3xl font-bold sm:text-4xl md:text-5xl">{movie?.title}</h1>
+                    <p className="mb-4 font-medium"> {movie?.overview}</p>
+                    <p className="font-extralight">Runtime</p>
+                    <p className="mb-4 font-bold">{movie?.runtime} min.</p>
+                    <p className="font-extralight">Genres</p>
+                    <p className="font-bold">{movie?.genres.map((genre) => genre).join(", ")}</p>
                 </div>
+            </section>
 
-            </div>
-        </>
+            <ScreeningOverview movieId={Number(id as string)} />
+        </div>
     );
 }

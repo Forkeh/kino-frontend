@@ -1,12 +1,13 @@
-import { IMovieItem } from '@/models/movie';
-import { Link } from 'react-router-dom';
-import Button from './Button';
+import { IMovieItem } from "@/models/movie";
+import { Link } from "react-router-dom";
+import Button from "./Button";
+import { IoTicket } from "react-icons/io5";
 
 type Props = {
     movie: IMovieItem;
 };
 
-const POSTER_URL = 'https://image.tmdb.org/t/p/w300';
+const POSTER_URL = "https://image.tmdb.org/t/p/w300";
 
 export default function MovieItem({ movie }: Props) {
     // function handleClick() {
@@ -14,17 +15,23 @@ export default function MovieItem({ movie }: Props) {
     // }
 
     return (
-        <div className="flex flex-col items-center">
-            <div>
-                <img className="object-cover w-full h-full rounded-xl" src={POSTER_URL + movie.poster} alt="poster missing" />
-            </div>
+        <article className="group flex max-w-52 flex-col items-center justify-between">
+            <Link to={`${movie.id}`}>
+                <img
+                    className="h-[313px] w-full cursor-pointer rounded-xl object-cover brightness-100 drop-shadow-md transition-all group-hover:brightness-110"
+                    src={POSTER_URL + movie.poster}
+                    alt="poster missing"
+                />
+            </Link>
 
-            <h3 className="font-bold text-lg line-clamp-1">{movie.title}</h3>
+            <h3 className="line-clamp-2 pb-2 text-center text-lg font-bold transition-all group-hover:text-white">{movie.title}</h3>
             <div>
                 <Link to={`${movie.id}`}>
-                    <Button>Bestil billet</Button>
+                    <Button style="secondary" icon={<IoTicket size={20} />}>
+                        Buy ticket
+                    </Button>
                 </Link>
             </div>
-        </div>
+        </article>
     );
 }

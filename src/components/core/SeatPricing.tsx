@@ -54,6 +54,7 @@ export default function SeatPricing({ seats, runtime, is3D }: Props) {
     return (
         <PricingDisplay>
             <div className="col-span-2 font-bold">Seats</div>
+            {seats.length === 0 && <span className="opacity-40">No seats selected</span>}
             {COWBOY_SEATS.length > 0 && (
                 <>
                     <div>
@@ -124,7 +125,7 @@ export default function SeatPricing({ seats, runtime, is3D }: Props) {
                     <div className="ml-auto">{RUNTIME_FEE * seats.length},-</div>
                 </>
             )}
-            <div className="col-span-2 mt-2 border-b-2 border-slate-400"></div>
+            <div className="col-span-2 mt-5 border-b-2 border-red-500"></div>
             <div className="font-bold">Total</div>
             <div className="ml-auto font-bold">{TOTAL_SEAT_PRICE + (FEE_3D + RUNTIME_FEE) * seats.length},-</div>
         </PricingDisplay>

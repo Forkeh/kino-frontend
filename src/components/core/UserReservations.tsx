@@ -25,9 +25,9 @@ export default function UserReservations() {
 
     return (
         <>
-            <div className={"flex flex-row flex-wrap gap-x-28 gap-y-10"}>
+            <section key={null} className={"flex animate-fade-in flex-row flex-wrap justify-center gap-5 sm:justify-start"}>
                 {reservations?.map((reservation) => <UserReservationsItem key={reservation.id} reservation={reservation} />)}
-            </div>
+            </section>
         </>
     );
 }

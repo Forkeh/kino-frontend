@@ -7,6 +7,8 @@ import { Link, useLocation } from "react-router-dom";
 import Button from "@/components/core/Button.tsx";
 import ScreeningInfo from "@/components/core/ScreeningInfo";
 import ScreeningTicketFooter from "@/components/layouts/ScreeningTicketFooter";
+import Seat from "@/components/core/Seat";
+import SeatIcon from "@/components/core/SeatIcon";
 
 const ScreeningPage = () => {
     const screening = useLocation().state as IScreening;
@@ -25,20 +27,28 @@ const ScreeningPage = () => {
         <>
             <ScreeningInfo screening={screening} />
 
-            <div className={"flex flex-wrap justify-center gap-10"}>
+            <div className={"flex flex-wrap justify-center gap-4 sm:mb-32 sm:gap-10"}>
                 <Auditorium screening={screening} handleSeatClick={handleSeatClick} />
 
-                <div className={"flex flex-col gap-5"}>
-                    <SeatPricing seats={selectedSeats} is3D={screening.is3D} runtime={screening.movie.runtime} />
-                    <div className={"flex justify-center"}>
-                        <Link to={`${screening.id}`} state={selectedSeats}>
-                            <Button>Continue</Button>
-                        </Link>
+                <section className={"mb-20 flex flex-col gap-5"}>
+                    <div className="flex justify-between gap-2">
+                        <SeatIcon color="#22c55e" text="Available" />
+                        <SeatIcon color="#3b82f6" text="Selected" />
+                        <SeatIcon color="#dc2626" text="Occupied" />
                     </div>
-                </div>
+
+                    <SeatPricing seats={selectedSeats} is3D={screening.is3D} runtime={screening.movie.runtime} />
+                    {selectedSeats.length > 0 && (
+                        <div className="flex animate-fade-in justify-center">
+                            <Link to={`${screening.id}`} state={selectedSeats}>
+                                <Button style="secondary">Continue</Button>
+                            </Link>
+                        </div>
+                    )}
+                </section>
             </div>
-            
-            <ScreeningTicketFooter selectedSeats={selectedSeats}  />
+
+            <ScreeningTicketFooter selectedSeats={selectedSeats} />
         </>
     );
 };

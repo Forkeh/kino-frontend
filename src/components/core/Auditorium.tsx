@@ -4,6 +4,7 @@ import { Iseat } from "@/models/seat.ts";
 import { toast } from "@/components/ui/use-toast";
 import Seat from "@/components/core/Seat.tsx";
 import { IScreening } from "@/models/screening";
+import RowNumbers from "./RowNumbers";
 
 // probs = screening object
 type Props = {
@@ -45,31 +46,38 @@ export default function Auditorium({ screening, handleSeatClick }: Props) {
     const numberOfRows = lastSeat?.rowNumber;
     const seatsPerRow = lastSeat?.seatNumber;
 
+    const rowNumbersArr = numberOfRows ? Array.from(Array(numberOfRows), (_, i) => i + 1) : [];
+
     return (
         // cols = seatsPerRow
         // rows = numberOfRows
         <>
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col items-center rounded-lg bg-[var(--backgroundColor)] p-3 shadow-lg min-w-96">
                 <div className=" mb-5 flex h-5 w-full items-center justify-center rounded-sm bg-gray-600 text-sm text-white">Screen</div>
                 {seats && reservedSeats && (
-                    <div
-                        style={{
-                            display: "grid",
-                            gridTemplateColumns: `repeat(${seatsPerRow}, minmax(0, 1fr))`,
-                            gridGap: "0.25rem",
-                            width: "90%",
-                            marginBottom: "80px",
-                        }}
-                    >
-                        {seats?.map((seat) => (
-                            <Seat
-                                key={seat.id}
-                                seat={seat}
-                                onSeatClick={handleSeatClick}
-                                disabled={reservedSeats.some((reserved) => reserved.id == seat.id)}
-                            />
-                        ))}
-                    </div>
+                    <section className="flex justify-center">
+                        <RowNumbers rowNumbers={rowNumbersArr} auditoriumSide="left" />
+                        <div
+                            style={{
+                                display: "grid",
+                                gridTemplateColumns: `repeat(${seatsPerRow}, minmax(0, 1fr))`,
+                                gridGap: "0.25rem",
+                                width: "90%",
+                                paddingLeft: "10px",
+                                paddingRight: "10px"
+                            }}
+                        >
+                            {seats?.map((seat) => (
+                                <Seat
+                                    key={seat.id}
+                                    seat={seat}
+                                    onSeatClick={handleSeatClick}
+                                    disabled={reservedSeats.some((reserved) => reserved.id == seat.id)}
+                                />
+                            ))}
+                        </div>
+                        <RowNumbers rowNumbers={rowNumbersArr} auditoriumSide="right" />
+                    </section>
                 )}
             </div>
         </>
